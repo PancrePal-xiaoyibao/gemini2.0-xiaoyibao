@@ -8,9 +8,6 @@ import main
 from mange_filelist import list_all_files, delete_file, clear_all_cache
 import google.generativeai as genai
 from dotenv import load_dotenv
-import matplotlib
-# 设置matplotlib的日志级别为INFO，隐藏DEBUG信息
-logging.getLogger('matplotlib').setLevel(logging.INFO)
 
 # 设置日志文件路径
 log_dir = "logs"
@@ -51,7 +48,8 @@ def check_proxy(proxy_url: str, timeout: int = 5) -> bool:
         }
         response = requests.get('https://api.gradio.app', 
                               proxies=proxies, 
-                              timeout=timeout)
+                              timeout=timeout,
+                              verify=False)  # 临时禁用SSL验证
         return response.status_code == 200
     except Exception as e:
         logger.error(f"代理检查失败: {e}")
@@ -86,87 +84,82 @@ def setup_gemini():
         model_config = config.get_model_config()
         
         # 初始化聊天模型
-        global chat_model  # 确保使用全局变量
         chat_config = model_config.get('chat', {})
         chat_model = genai.GenerativeModel(
-            model_name=chat_config.get('model_name', 'gemini-pro'),  # 使用gemini-pro模型
+            model_name=chat_config.get('model_name', 'gemini-2.0-flash-exp'),
             generation_config=genai.GenerationConfig(
                 temperature=chat_config.get('temperature', 0.7),
                 max_output_tokens=chat_config.get('max_output_tokens', 2048),
             )
         )
-        logger.info("聊天模型初始化成功")
         
         # 初始化视觉模型
-        global vision_model  # 确保使用全局变量
         vision_config = model_config.get('vision', {})
         vision_model = genai.GenerativeModel(
-            model_name=vision_config.get('model_name', 'gemini-pro-vision'),  # 使用gemini-pro-vision模型
+            model_name=vision_config.get('model_name', 'gemini-2.0-flash-exp'),
             generation_config=genai.GenerationConfig(
                 temperature=vision_config.get('temperature', 0.7),
                 max_output_tokens=vision_config.get('max_output_tokens', 2048),
             )
         )
-        logger.info("视觉模型初始化成功")
         
+        logger.info("Gemini模型初始化成功")
         return chat_model, vision_model
         
     except Exception as e:
-        error_msg = f"初始化Gemini时发生错误: {str(e)}"
-        logger.error(error_msg, exc_info=True)
-        raise Exception(error_msg)
+        logger.error(f"Gemini初始化失败: {e}")
+        raise
 
 # 初始化配置
 ui_config = config.get_ui_config()
 prompts = config.get_prompts()
 
-# 初始化全局变量
-chat_model = None
-vision_model = None
-chat_session = None  # 添加chat_session
-
-# 初始化模型
 try:
+    # 初始化Gemini模型
     chat_model, vision_model = setup_gemini()
-    # 初始化聊天会话
-    chat_session = chat_model.start_chat(history=[])
-    logger.info("模型和聊天会话初始化成功")
 except Exception as e:
-    logger.error(f"模型初始化失败: {e}")
-    sys.exit(1)
+    logger.error(f"系统初始化失败: {e}")
+    raise
 
-def chat(message: str, history: list) -> str:
+# 对话历史
+chat_history = []
+
+def chat(message: str, history: list) -> tuple[str, list]:
     """处理普通对话"""
     try:
         logger.debug(f"chat函数被调用")
         logger.info(f"开始处理普通对话，输入消息：{message}")
+        logger.debug(f"当前历史记录：{history}")
         
         if not message:
             logger.warning("输入消息为空")
-            return ""
+            return "", history
         
-        if not chat_session:
-            error_msg = "聊天会话未初始化"
-            logger.error(error_msg)
-            return error_msg
+        # 初始化历史记录
+        if history is None:
+            logger.debug("初始化历史记录")
+            history = []
             
-        # 使用chat_session发送消息
-        response = chat_session.send_message(prompts['chat'] + "\n\n用户问题：" + message)
+        model_config = config.get_model_config()['chat']
+        logger.info(f"使用模型配置：{model_config}")
         
-        if not response:
-            error_msg = "模型未返回响应"
-            logger.error(error_msg)
-            return error_msg
-            
+        # 使用初始化好的聊天模型
+        response = chat_model.generate_content(prompts['chat'] + "\n\n用户问题：" + message)
         response_text = response.text
         logger.info(f"收到回复：{response_text}")
         
-        return response_text
+        # 更新对话历史
+        history.append((message, response_text))
+        logger.debug(f"更新后的历史记录：{history}")
+        return "", history
         
     except Exception as e:
         error_msg = f"处理对话时发生错误: {str(e)}"
         logger.error(error_msg, exc_info=True)
-        return error_msg
+        if history is None:
+            history = []
+        history.append((message, error_msg))
+        return "", history
 
 def analyze_image_chat(image, image_type: str, message: str, history: list) -> list:
     """处理图片分析和对话"""
@@ -348,7 +341,8 @@ with gr.Blocks(css=f"body {{ background-color: {ui_config['theme_color']}; }}") 
         chat_interface = gr.ChatInterface(
             fn=chat,
             title="医疗问答助手",
-            description="我是一位专业的医生，可以用通俗易懂的方式解答医学相关的问题"
+            description="我是一位专业的医生，可以用通俗易懂的方式解答医学相关的问题",
+            examples=["什么是高血压？", "糖尿病的早期症状有哪些？"]
         )
 
     with gr.Tab(ui_config["image_title"]):

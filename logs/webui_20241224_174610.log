@@ -1,0 +1,209 @@
+2024-12-24 17:46:10,380 - INFO - 日志文件路径：logs/webui_20241224_174610.log
+2024-12-24 17:46:10,381 - INFO - 聊天模型初始化成功
+2024-12-24 17:46:10,381 - INFO - 视觉模型初始化成功
+2024-12-24 17:46:10,381 - INFO - 模型和聊天会话初始化成功
+2024-12-24 17:46:10,382 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 17:46:10,383 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 17:46:10,383 - DEBUG - Using selector: KqueueSelector
+2024-12-24 17:46:10,385 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2024-12-24 17:46:10,389 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 17:46:10,390 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 17:46:10,396 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 17:46:10,396 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 17:46:10,402 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 17:46:10,403 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 17:46:10,414 - DEBUG - connect_tcp.started host='127.0.0.1' port=7890 local_address=None timeout=3 socket_options=None
+2024-12-24 17:46:10,441 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x14e0a6350>
+2024-12-24 17:46:10,441 - DEBUG - send_request_headers.started request=<Request [b'CONNECT']>
+2024-12-24 17:46:10,442 - DEBUG - send_request_headers.complete
+2024-12-24 17:46:10,442 - DEBUG - send_request_body.started request=<Request [b'CONNECT']>
+2024-12-24 17:46:10,442 - DEBUG - send_request_body.complete
+2024-12-24 17:46:10,442 - DEBUG - receive_response_headers.started request=<Request [b'CONNECT']>
+2024-12-24 17:46:10,442 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'Connection established', [])
+2024-12-24 17:46:10,442 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x14dfa3640> server_hostname='api.gradio.app' timeout=3
+2024-12-24 17:46:10,443 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 17:46:10,444 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 17:46:10,445 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2024-12-24 17:46:10,453 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 17:46:10,476 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 17:46:10,491 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 17:46:10,519 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 17:46:10,522 - DEBUG - manage_files_ui函数被调用
+2024-12-24 17:46:10,522 - INFO - 开始获取文件列表
+2024-12-24 17:46:10,522 - INFO - 文件列表为空
+2024-12-24 17:46:10,523 - INFO - Gradio Web UI 初始化完成
+2024-12-24 17:46:10,531 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 17:46:10,545 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 17:46:10,614 - DEBUG - connect_tcp.started host='127.0.0.1' port=7890 local_address=None timeout=3 socket_options=None
+2024-12-24 17:46:10,628 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x14e4970d0>
+2024-12-24 17:46:10,628 - DEBUG - send_request_headers.started request=<Request [b'CONNECT']>
+2024-12-24 17:46:10,628 - DEBUG - send_request_headers.complete
+2024-12-24 17:46:10,629 - DEBUG - send_request_body.started request=<Request [b'CONNECT']>
+2024-12-24 17:46:10,629 - DEBUG - send_request_body.complete
+2024-12-24 17:46:10,629 - DEBUG - receive_response_headers.started request=<Request [b'CONNECT']>
+2024-12-24 17:46:10,646 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'Connection established', [])
+2024-12-24 17:46:10,663 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x14e033940> server_hostname='api.gradio.app' timeout=3
+2024-12-24 17:46:10,676 - DEBUG - Using selector: KqueueSelector
+2024-12-24 17:46:10,684 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 17:46:10,684 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 17:46:10,690 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 17:46:10,691 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 17:46:10,696 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 17:46:10,696 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 17:46:10,702 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 17:46:10,702 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 17:46:10,712 - DEBUG - connect_tcp.started host='127.0.0.1' port=7890 local_address=None timeout=None socket_options=None
+2024-12-24 17:46:10,712 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x14f42c340>
+2024-12-24 17:46:10,712 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2024-12-24 17:46:10,712 - DEBUG - send_request_headers.complete
+2024-12-24 17:46:10,712 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2024-12-24 17:46:10,712 - DEBUG - send_request_body.complete
+2024-12-24 17:46:10,712 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2024-12-24 17:46:11,054 - DEBUG - https://huggingface.co:443 "HEAD /api/telemetry/gradio/initiated HTTP/11" 200 0
+2024-12-24 17:46:11,108 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 502, b'Bad Gateway', [(b'Connection', b'close'), (b'Content-Length', b'0')])
+2024-12-24 17:46:11,108 - INFO - HTTP Request: GET http://localhost:7070/gradio_api/startup-events "HTTP/1.1 502 Bad Gateway"
+2024-12-24 17:46:11,109 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2024-12-24 17:46:11,109 - DEBUG - receive_response_body.complete
+2024-12-24 17:46:11,109 - DEBUG - response_closed.started
+2024-12-24 17:46:11,109 - DEBUG - response_closed.complete
+2024-12-24 17:46:11,114 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:11,114 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x14e3c8250>
+2024-12-24 17:46:11,114 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:11,115 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2024-12-24 17:46:11,115 - DEBUG - send_request_headers.complete
+2024-12-24 17:46:11,115 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:11,116 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2024-12-24 17:46:11,116 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:11,117 - DEBUG - send_request_body.complete
+2024-12-24 17:46:11,117 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2024-12-24 17:46:11,118 - DEBUG - connect_tcp.started host='127.0.0.1' port=7890 local_address=None timeout=3 socket_options=None
+2024-12-24 17:46:11,119 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x14e0a61d0>
+2024-12-24 17:46:11,119 - DEBUG - send_request_headers.started request=<Request [b'HEAD']>
+2024-12-24 17:46:11,119 - DEBUG - send_request_headers.complete
+2024-12-24 17:46:11,119 - DEBUG - send_request_body.started request=<Request [b'HEAD']>
+2024-12-24 17:46:11,119 - DEBUG - send_request_body.complete
+2024-12-24 17:46:11,119 - DEBUG - receive_response_headers.started request=<Request [b'HEAD']>
+2024-12-24 17:46:11,259 - DEBUG - https://huggingface.co:443 "HEAD /api/telemetry/gradio/initiated HTTP/11" 200 0
+2024-12-24 17:46:11,313 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x14f362e60>
+2024-12-24 17:46:11,315 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2024-12-24 17:46:11,316 - DEBUG - send_request_headers.complete
+2024-12-24 17:46:11,316 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2024-12-24 17:46:11,316 - DEBUG - send_request_body.complete
+2024-12-24 17:46:11,316 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2024-12-24 17:46:11,333 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 24 Dec 2024 09:46:11 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'21'), (b'Connection', b'keep-alive'), (b'Server', b'nginx/1.18.0'), (b'Access-Control-Allow-Origin', b'*')])
+2024-12-24 17:46:11,334 - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2024-12-24 17:46:11,334 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2024-12-24 17:46:11,334 - DEBUG - receive_response_body.complete
+2024-12-24 17:46:11,334 - DEBUG - response_closed.started
+2024-12-24 17:46:11,335 - DEBUG - response_closed.complete
+2024-12-24 17:46:11,502 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 502, b'Bad Gateway', [(b'Connection', b'close'), (b'Content-Length', b'0')])
+2024-12-24 17:46:11,503 - INFO - HTTP Request: HEAD http://localhost:7070/ "HTTP/1.1 502 Bad Gateway"
+2024-12-24 17:46:11,503 - DEBUG - receive_response_body.started request=<Request [b'HEAD']>
+2024-12-24 17:46:11,503 - DEBUG - receive_response_body.complete
+2024-12-24 17:46:11,503 - DEBUG - response_closed.started
+2024-12-24 17:46:11,503 - DEBUG - response_closed.complete
+2024-12-24 17:46:11,539 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 24 Dec 2024 09:46:11 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'21'), (b'Connection', b'keep-alive'), (b'Server', b'nginx/1.18.0'), (b'Access-Control-Allow-Origin', b'*')])
+2024-12-24 17:46:11,539 - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2024-12-24 17:46:11,540 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2024-12-24 17:46:11,540 - DEBUG - receive_response_body.complete
+2024-12-24 17:46:11,540 - DEBUG - response_closed.started
+2024-12-24 17:46:11,540 - DEBUG - response_closed.complete
+2024-12-24 17:46:12,009 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:12,010 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:12,011 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:12,011 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:12,012 - DEBUG - connect_tcp.started host='127.0.0.1' port=7890 local_address=None timeout=3 socket_options=None
+2024-12-24 17:46:12,013 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x14e3ca260>
+2024-12-24 17:46:12,013 - DEBUG - send_request_headers.started request=<Request [b'HEAD']>
+2024-12-24 17:46:12,014 - DEBUG - send_request_headers.complete
+2024-12-24 17:46:12,014 - DEBUG - send_request_body.started request=<Request [b'HEAD']>
+2024-12-24 17:46:12,014 - DEBUG - send_request_body.complete
+2024-12-24 17:46:12,014 - DEBUG - receive_response_headers.started request=<Request [b'HEAD']>
+2024-12-24 17:46:12,385 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 502, b'Bad Gateway', [(b'Connection', b'close'), (b'Content-Length', b'0')])
+2024-12-24 17:46:12,388 - INFO - HTTP Request: HEAD http://localhost:7070/ "HTTP/1.1 502 Bad Gateway"
+2024-12-24 17:46:12,388 - DEBUG - receive_response_body.started request=<Request [b'HEAD']>
+2024-12-24 17:46:12,389 - DEBUG - receive_response_body.complete
+2024-12-24 17:46:12,389 - DEBUG - response_closed.started
+2024-12-24 17:46:12,389 - DEBUG - response_closed.complete
+2024-12-24 17:46:12,895 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:12,897 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:12,899 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:12,900 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:12,901 - DEBUG - connect_tcp.started host='127.0.0.1' port=7890 local_address=None timeout=3 socket_options=None
+2024-12-24 17:46:12,902 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x14f42d990>
+2024-12-24 17:46:12,902 - DEBUG - send_request_headers.started request=<Request [b'HEAD']>
+2024-12-24 17:46:12,903 - DEBUG - send_request_headers.complete
+2024-12-24 17:46:12,903 - DEBUG - send_request_body.started request=<Request [b'HEAD']>
+2024-12-24 17:46:12,903 - DEBUG - send_request_body.complete
+2024-12-24 17:46:12,903 - DEBUG - receive_response_headers.started request=<Request [b'HEAD']>
+2024-12-24 17:46:13,285 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 502, b'Bad Gateway', [(b'Connection', b'close'), (b'Content-Length', b'0')])
+2024-12-24 17:46:13,287 - INFO - HTTP Request: HEAD http://localhost:7070/ "HTTP/1.1 502 Bad Gateway"
+2024-12-24 17:46:13,288 - DEBUG - receive_response_body.started request=<Request [b'HEAD']>
+2024-12-24 17:46:13,288 - DEBUG - receive_response_body.complete
+2024-12-24 17:46:13,289 - DEBUG - response_closed.started
+2024-12-24 17:46:13,289 - DEBUG - response_closed.complete
+2024-12-24 17:46:13,800 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:13,802 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:13,803 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:13,804 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:13,805 - DEBUG - connect_tcp.started host='127.0.0.1' port=7890 local_address=None timeout=3 socket_options=None
+2024-12-24 17:46:13,806 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x14f42e8f0>
+2024-12-24 17:46:13,806 - DEBUG - send_request_headers.started request=<Request [b'HEAD']>
+2024-12-24 17:46:13,807 - DEBUG - send_request_headers.complete
+2024-12-24 17:46:13,807 - DEBUG - send_request_body.started request=<Request [b'HEAD']>
+2024-12-24 17:46:13,807 - DEBUG - send_request_body.complete
+2024-12-24 17:46:13,807 - DEBUG - receive_response_headers.started request=<Request [b'HEAD']>
+2024-12-24 17:46:14,193 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 502, b'Bad Gateway', [(b'Connection', b'close'), (b'Content-Length', b'0')])
+2024-12-24 17:46:14,196 - INFO - HTTP Request: HEAD http://localhost:7070/ "HTTP/1.1 502 Bad Gateway"
+2024-12-24 17:46:14,197 - DEBUG - receive_response_body.started request=<Request [b'HEAD']>
+2024-12-24 17:46:14,197 - DEBUG - receive_response_body.complete
+2024-12-24 17:46:14,197 - DEBUG - response_closed.started
+2024-12-24 17:46:14,198 - DEBUG - response_closed.complete
+2024-12-24 17:46:14,706 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:14,708 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:14,709 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:14,709 - DEBUG - load_ssl_context verify=False cert=None trust_env=True http2=False
+2024-12-24 17:46:14,710 - DEBUG - connect_tcp.started host='127.0.0.1' port=7890 local_address=None timeout=3 socket_options=None
+2024-12-24 17:46:14,711 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x14f42f880>
+2024-12-24 17:46:14,712 - DEBUG - send_request_headers.started request=<Request [b'HEAD']>
+2024-12-24 17:46:14,712 - DEBUG - send_request_headers.complete
+2024-12-24 17:46:14,712 - DEBUG - send_request_body.started request=<Request [b'HEAD']>
+2024-12-24 17:46:14,713 - DEBUG - send_request_body.complete
+2024-12-24 17:46:14,713 - DEBUG - receive_response_headers.started request=<Request [b'HEAD']>
+2024-12-24 17:46:15,157 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 502, b'Bad Gateway', [(b'Connection', b'close'), (b'Content-Length', b'0')])
+2024-12-24 17:46:15,159 - INFO - HTTP Request: HEAD http://localhost:7070/ "HTTP/1.1 502 Bad Gateway"
+2024-12-24 17:46:15,159 - DEBUG - receive_response_body.started request=<Request [b'HEAD']>
+2024-12-24 17:46:15,159 - DEBUG - receive_response_body.complete
+2024-12-24 17:46:15,160 - DEBUG - response_closed.started
+2024-12-24 17:46:15,160 - DEBUG - response_closed.complete
+2024-12-24 17:46:15,667 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 17:46:15,670 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 17:46:15,685 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 17:46:15,686 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 17:46:15,697 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 17:46:15,697 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 17:46:15,706 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 17:46:15,706 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 17:46:15,714 - DEBUG - connect_tcp.started host='127.0.0.1' port=7890 local_address=None timeout=30 socket_options=None
+2024-12-24 17:46:15,715 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x14f4448b0>
+2024-12-24 17:46:15,715 - DEBUG - send_request_headers.started request=<Request [b'CONNECT']>
+2024-12-24 17:46:15,715 - DEBUG - send_request_headers.complete
+2024-12-24 17:46:15,715 - DEBUG - send_request_body.started request=<Request [b'CONNECT']>
+2024-12-24 17:46:15,715 - DEBUG - send_request_body.complete
+2024-12-24 17:46:15,715 - DEBUG - receive_response_headers.started request=<Request [b'CONNECT']>
+2024-12-24 17:46:15,715 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'Connection established', [])
+2024-12-24 17:46:15,715 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x14dc96bc0> server_hostname='api.gradio.app' timeout=30
+2024-12-24 17:46:16,763 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x14f4448e0>
+2024-12-24 17:46:16,764 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2024-12-24 17:46:16,765 - DEBUG - send_request_headers.complete
+2024-12-24 17:46:16,766 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2024-12-24 17:46:16,766 - DEBUG - send_request_body.complete
+2024-12-24 17:46:16,766 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2024-12-24 17:46:17,000 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 24 Dec 2024 09:46:16 GMT'), (b'Content-Type', b'text/html; charset=utf-8'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Server', b'nginx/1.18.0'), (b'ContentType', b'application/json'), (b'Access-Control-Allow-Origin', b'*'), (b'Content-Encoding', b'gzip')])
+2024-12-24 17:46:17,002 - INFO - HTTP Request: GET https://api.gradio.app/v3/tunnel-request "HTTP/1.1 200 OK"
+2024-12-24 17:46:17,003 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2024-12-24 17:46:17,005 - DEBUG - receive_response_body.complete
+2024-12-24 17:46:17,005 - DEBUG - response_closed.started
+2024-12-24 17:46:17,005 - DEBUG - response_closed.complete
+2024-12-24 17:46:18,003 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2024-12-24 17:46:18,998 - DEBUG - https://huggingface.co:443 "HEAD /api/telemetry/gradio/launched HTTP/11" 200 0

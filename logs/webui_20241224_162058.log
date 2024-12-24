@@ -1,0 +1,25 @@
+2024-12-24 16:20:58,540 - INFO - 日志文件路径：logs/webui_20241224_162058.log
+2024-12-24 16:20:58,540 - INFO - 已启用代理配置
+2024-12-24 16:20:58,541 - INFO - Gemini模型初始化成功
+2024-12-24 16:20:58,542 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 16:20:58,543 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 16:20:58,544 - DEBUG - Using selector: KqueueSelector
+2024-12-24 16:20:58,550 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 16:20:58,570 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2024-12-24 16:20:58,584 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 16:20:58,591 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 16:20:58,591 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 16:20:58,597 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 16:20:58,597 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 16:20:58,603 - DEBUG - connect_tcp.started host='127.0.0.1' port=7890 local_address=None timeout=3 socket_options=None
+2024-12-24 16:20:58,603 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10291c940>
+2024-12-24 16:20:58,603 - DEBUG - send_request_headers.started request=<Request [b'CONNECT']>
+2024-12-24 16:20:58,603 - DEBUG - send_request_headers.complete
+2024-12-24 16:20:58,604 - DEBUG - send_request_body.started request=<Request [b'CONNECT']>
+2024-12-24 16:20:58,604 - DEBUG - send_request_body.complete
+2024-12-24 16:20:58,604 - DEBUG - receive_response_headers.started request=<Request [b'CONNECT']>
+2024-12-24 16:20:58,604 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'Connection established', [])
+2024-12-24 16:20:58,604 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x168a6d640> server_hostname='api.gradio.app' timeout=3
+2024-12-24 16:20:58,744 - DEBUG - start_tls.failed exception=ConnectError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1007)'))
+2024-12-24 16:20:58,744 - DEBUG - close.started
+2024-12-24 16:20:58,745 - DEBUG - close.complete

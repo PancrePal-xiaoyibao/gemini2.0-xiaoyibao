@@ -1,6 +1,7 @@
-google-generativeai==0.3.0
-python-dotenv>=1.0.0
-httpx>=0.25.0
+google-generativeai==0.3.2
+python-dotenv==1.0.0
+requests==2.31.0
+httpx==0.26.0
 Pillow>=10.0.0
 gradio==5.9.1
 pydantic>=2.5.2

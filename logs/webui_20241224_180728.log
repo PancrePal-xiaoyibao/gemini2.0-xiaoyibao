@@ -1,0 +1,79 @@
+2024-12-24 18:07:28,464 - INFO - 日志文件路径：logs/webui_20241224_180728.log
+2024-12-24 18:07:28,465 - INFO - 聊天模型初始化成功
+2024-12-24 18:07:28,465 - INFO - 视觉模型初始化成功
+2024-12-24 18:07:28,465 - INFO - 模型和聊天会话初始化成功
+2024-12-24 18:07:28,467 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 18:07:28,467 - DEBUG - Using selector: KqueueSelector
+2024-12-24 18:07:28,467 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 18:07:28,469 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2024-12-24 18:07:28,473 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 18:07:28,474 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 18:07:28,480 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 18:07:28,481 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 18:07:28,487 - DEBUG - connect_tcp.started host='127.0.0.1' port=7890 local_address=None timeout=3 socket_options=None
+2024-12-24 18:07:28,488 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x16933bca0>
+2024-12-24 18:07:28,488 - DEBUG - send_request_headers.started request=<Request [b'CONNECT']>
+2024-12-24 18:07:28,488 - DEBUG - send_request_headers.complete
+2024-12-24 18:07:28,512 - DEBUG - send_request_body.started request=<Request [b'CONNECT']>
+2024-12-24 18:07:28,524 - DEBUG - send_request_body.complete
+2024-12-24 18:07:28,524 - DEBUG - receive_response_headers.started request=<Request [b'CONNECT']>
+2024-12-24 18:07:28,525 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'Connection established', [])
+2024-12-24 18:07:28,526 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x1693a7740> server_hostname='api.gradio.app' timeout=3
+2024-12-24 18:07:28,527 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2024-12-24 18:07:28,527 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 18:07:28,529 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 18:07:28,545 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 18:07:28,561 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 18:07:28,567 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 18:07:28,577 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 18:07:28,601 - DEBUG - manage_files_ui函数被调用
+2024-12-24 18:07:28,602 - INFO - 开始获取文件列表
+2024-12-24 18:07:28,602 - INFO - 文件列表为空
+2024-12-24 18:07:28,602 - DEBUG - connect_tcp.started host='127.0.0.1' port=7890 local_address=None timeout=3 socket_options=None
+2024-12-24 18:07:28,603 - INFO - Gradio Web UI 初始化完成
+2024-12-24 18:07:28,603 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x16bf02c80>
+2024-12-24 18:07:28,603 - DEBUG - send_request_headers.started request=<Request [b'CONNECT']>
+2024-12-24 18:07:28,604 - DEBUG - send_request_headers.complete
+2024-12-24 18:07:28,604 - DEBUG - send_request_body.started request=<Request [b'CONNECT']>
+2024-12-24 18:07:28,604 - DEBUG - send_request_body.complete
+2024-12-24 18:07:28,604 - DEBUG - receive_response_headers.started request=<Request [b'CONNECT']>
+2024-12-24 18:07:28,604 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'Connection established', [])
+2024-12-24 18:07:28,604 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x1695835c0> server_hostname='api.gradio.app' timeout=3
+2024-12-24 18:07:28,656 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2024-12-24 18:07:28,662 - DEBUG - send_request_headers.complete
+2024-12-24 18:07:28,688 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2024-12-24 18:07:28,688 - DEBUG - send_request_body.complete
+2024-12-24 18:07:28,688 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2024-12-24 18:07:28,744 - DEBUG - Using selector: KqueueSelector
+2024-12-24 18:07:28,876 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 24 Dec 2024 10:07:28 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'3'), (b'Connection', b'keep-alive'), (b'Server', b'nginx/1.18.0'), (b'Access-Control-Allow-Origin', b'*')])
+2024-12-24 18:07:28,877 - INFO - HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2024-12-24 18:07:28,877 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2024-12-24 18:07:28,877 - DEBUG - receive_response_body.complete
+2024-12-24 18:07:28,877 - DEBUG - response_closed.started
+2024-12-24 18:07:28,877 - DEBUG - response_closed.complete
+2024-12-24 18:07:29,163 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x16a1978b0>
+2024-12-24 18:07:29,165 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2024-12-24 18:07:29,166 - DEBUG - send_request_headers.complete
+2024-12-24 18:07:29,166 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2024-12-24 18:07:29,166 - DEBUG - send_request_body.complete
+2024-12-24 18:07:29,166 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2024-12-24 18:07:29,273 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x16bf02ec0>
+2024-12-24 18:07:29,274 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2024-12-24 18:07:29,275 - DEBUG - send_request_headers.complete
+2024-12-24 18:07:29,275 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2024-12-24 18:07:29,275 - DEBUG - send_request_body.complete
+2024-12-24 18:07:29,275 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2024-12-24 18:07:29,380 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 24 Dec 2024 10:07:29 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'21'), (b'Connection', b'keep-alive'), (b'Server', b'nginx/1.18.0'), (b'Access-Control-Allow-Origin', b'*')])
+2024-12-24 18:07:29,381 - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2024-12-24 18:07:29,382 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2024-12-24 18:07:29,382 - DEBUG - receive_response_body.complete
+2024-12-24 18:07:29,383 - DEBUG - response_closed.started
+2024-12-24 18:07:29,383 - DEBUG - response_closed.complete
+2024-12-24 18:07:29,498 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 24 Dec 2024 10:07:29 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'21'), (b'Connection', b'keep-alive'), (b'Server', b'nginx/1.18.0'), (b'Access-Control-Allow-Origin', b'*')])
+2024-12-24 18:07:29,499 - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2024-12-24 18:07:29,499 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2024-12-24 18:07:29,500 - DEBUG - receive_response_body.complete
+2024-12-24 18:07:29,500 - DEBUG - response_closed.started
+2024-12-24 18:07:29,500 - DEBUG - response_closed.complete
+2024-12-24 18:07:29,536 - DEBUG - https://huggingface.co:443 "HEAD /api/telemetry/gradio/initiated HTTP/11" 200 0
+2024-12-24 18:07:29,536 - DEBUG - https://huggingface.co:443 "HEAD /api/telemetry/gradio/initiated HTTP/11" 200 0

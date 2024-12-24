@@ -1,19 +1,20 @@
 {
     "model_config": {
         "chat": {
-            "model_name": "gemini-2.0-flash-exp",
-            "temperature": 0.7,
-            "max_output_tokens": 2048
+            "model_name": "gemini-2.0-flash-exp", 
+            "temperature": 0.7, 
+            "max_output_tokens": 2048 
         },
         "vision": {
-            "model_name": "gemini-2.0-flash-exp",
-            "temperature": 0.7,
-            "max_output_tokens": 2048
+            "model_name": "gemini-2.0-flash-exp", 
+            "temperature": 0.7, 
+            "max_output_tokens": 2048 
         },
         "pdf": {
             "model_name": "gemini-1.5-flash-002",
             "temperature": 0.7,
-            "max_output_tokens": 2048
+            "max_output_tokens": 2048,
+            "cache_format": "json"
         }
     },
     "ui_config": {
@@ -27,8 +28,20 @@
     "system_config": {
         "upload_path": "uploads/",
         "cache_path": "cache/",
-        "supported_image_types": ["image/jpeg", "image/png", "image/gif"],
-        "supported_doc_types": ["application/pdf"]
+        "supported_image_types": ["jpeg", "png", "bmp","gif"],
+        "supported_doc_types": ["application/pdf"],
+        "proxy": {
+            "enabled": false,
+            "http": "http://127.0.0.1:7890",
+            "https": "http://127.0.0.1:7890",
+            "timeout": 30,
+            "retry_count": 3
+        },
+        "cache_config": {
+            "format": "json",
+            "retention_period": 24,
+            "max_size": 100
+        }
     },
     "prompts": {
         "chat": "你是一位专业的医生，可以用通俗易懂的方式解答医学相关的问题。如果涉及到专业术语，请先解释这个术语的定义和意义，然后再进行详细说明。",

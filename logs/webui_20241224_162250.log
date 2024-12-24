@@ -1,0 +1,34 @@
+2024-12-24 16:22:50,751 - INFO - 日志文件路径：logs/webui_20241224_162250.log
+2024-12-24 16:22:50,751 - INFO - Gemini模型初始化成功
+2024-12-24 16:22:50,753 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 16:22:50,754 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 16:22:50,755 - DEBUG - Using selector: KqueueSelector
+2024-12-24 16:22:50,761 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 16:22:50,768 - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2024-12-24 16:22:50,795 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 16:22:50,840 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 16:22:50,840 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 16:22:50,846 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-12-24 16:22:50,846 - DEBUG - load_verify_locations cafile='/opt/miniconda3/envs/cow/lib/python3.10/site-packages/certifi/cacert.pem'
+2024-12-24 16:22:50,852 - DEBUG - connect_tcp.started host='127.0.0.1' port=7890 local_address=None timeout=3 socket_options=None
+2024-12-24 16:22:50,852 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x100bc7670>
+2024-12-24 16:22:50,852 - DEBUG - send_request_headers.started request=<Request [b'CONNECT']>
+2024-12-24 16:22:50,852 - DEBUG - send_request_headers.complete
+2024-12-24 16:22:50,853 - DEBUG - send_request_body.started request=<Request [b'CONNECT']>
+2024-12-24 16:22:50,853 - DEBUG - send_request_body.complete
+2024-12-24 16:22:50,853 - DEBUG - receive_response_headers.started request=<Request [b'CONNECT']>
+2024-12-24 16:22:50,853 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'Connection established', [])
+2024-12-24 16:22:50,853 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x1454cbf40> server_hostname='api.gradio.app' timeout=3
+2024-12-24 16:22:51,179 - DEBUG - https://huggingface.co:443 "HEAD /api/telemetry/gradio/initiated HTTP/11" 200 0
+2024-12-24 16:22:51,511 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1454f6cb0>
+2024-12-24 16:22:51,512 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2024-12-24 16:22:51,513 - DEBUG - send_request_headers.complete
+2024-12-24 16:22:51,513 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2024-12-24 16:22:51,513 - DEBUG - send_request_body.complete
+2024-12-24 16:22:51,513 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2024-12-24 16:22:51,725 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 24 Dec 2024 08:22:51 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'21'), (b'Connection', b'keep-alive'), (b'Server', b'nginx/1.18.0'), (b'Access-Control-Allow-Origin', b'*')])
+2024-12-24 16:22:51,727 - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2024-12-24 16:22:51,728 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2024-12-24 16:22:51,728 - DEBUG - receive_response_body.complete
+2024-12-24 16:22:51,728 - DEBUG - response_closed.started
+2024-12-24 16:22:51,728 - DEBUG - response_closed.complete
