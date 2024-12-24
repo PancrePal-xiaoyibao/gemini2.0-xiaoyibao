@@ -84,8 +84,9 @@ def show_menu():
     print("1. 图片解读")
     print("2. 检验报告解读")
     print("3. 问答对话")
-    print("4. 退出")
-    return input("请选择功能（1-4）：").strip()
+    print("4. 文件管理")
+    print("5. 退出")
+    return input("请选择功能（1-5）：").strip()
 
 def get_local_image():
     """获取本地图片路径"""
@@ -267,18 +268,19 @@ def main():
             print("\n回答：")
             print(response.text)
         elif choice == "4":
+            from mange_filelist import manage_files  # 导入文件管理功能
+            manage_files()
+        elif choice == "5":
             print("感谢使用，再见！")
             break
         else:
-            print("无效的选择，请重新输入")
+            print("无效的选择，请重试")
 
 if __name__ == "__main__":
     # 清理缓存
     # genai.caching.clear_all()  # 清除所有缓存
     
-    prompt = "你是一位专业的胰腺癌医生，可以解读报告，以通俗易懂的方式，帮助病人解释复杂的属于，提示关键信息，以及未来和治疗相关的内容提示.如果告有术语，请先解释下这个术语和指标的定义，意义，以及和病情相关的提示。"
-    
-    # 创建全局模型配置和实例
+    # 初始化全局模型
     generation_config = {
         "temperature": 1,
         "top_p": 0.95,
@@ -287,7 +289,6 @@ if __name__ == "__main__":
         "response_mime_type": "text/plain",
     }
     
-    # 初始化全局模型
     model = genai.GenerativeModel(
         model_name="gemini-2.0-flash-exp",  # 主程序使用的模型
         generation_config=generation_config,
@@ -299,6 +300,8 @@ if __name__ == "__main__":
     # 初始化聊天会话
     chat_session = model.start_chat(history=initial_history)
     logging.info("聊天会话已启动。")
+    
+    prompt = "你是一位专业的胰腺癌医生，可以解读报告，以通俗易懂的方式，帮助病人解释复杂的属于，提示关键信息，以及未来和治疗相关的内容提示.如果告有术语，请先解释下这个术语和指标的定义，意义，以及和病情相关的提示。"
     
     # 运行主程序
     main()
