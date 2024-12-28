@@ -128,5 +128,9 @@ class Config:
         
         return save_path
 
+    def get_login_password(self):
+        """获取登录密码"""
+        return self.config.get("system_config", {}).get("login_config", {}).get("password", "")
+
 # 创建全局配置实例
 config = Config()

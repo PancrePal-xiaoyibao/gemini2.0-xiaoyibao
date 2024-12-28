@@ -30,6 +30,10 @@
         "cache_path": "cache/",
         "supported_image_types": ["jpeg", "png", "bmp","gif"],
         "supported_doc_types": ["application/pdf"],
+        "login_config": {
+            "password": "xiaoyibao@123abc",
+            "session_expiry_days": 7
+        },
         "proxy": {
             "enabled": false,
             "http": "http://127.0.0.1:7890",
