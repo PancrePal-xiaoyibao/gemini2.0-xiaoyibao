@@ -7227,3 +7227,4 @@ NameError: name 'report_content' is not defined
 2024-12-28 15:55:39,925 - __main__ - INFO - 模型和聊天会话初始化成功
 2024-12-28 15:55:39,994 - __main__ - INFO - 开始获取文件列表
 2024-12-28 15:55:41,484 - __main__ - INFO - Streamlit Web UI 初始化完成
+2024-12-28 16:03:16,836 - config - INFO - 成功加载配置文件

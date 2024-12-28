@@ -244,58 +244,75 @@ def analyze_report_chat(pdf_file, message: str, history: list) -> list:
     """处理报告分析和对话"""
     try:
         logger.info(f"开始处理报告分析，消息：{message}")
+        
+        # 检查是否有PDF文件上传
         if pdf_file is None and not message:
             history.append({"role": "assistant", "content": "请先上传报告"})
             return history
         
+        # 如果有新的PDF文件上传
         if pdf_file is not None:
+            logger.info("处理新上传的PDF文件")
             # 保存PDF到临时文件
             temp_path = os.path.join(config.get_upload_path(), "temp_report.pdf")
             with open(temp_path, "wb") as f:
                 f.write(pdf_file.read())
             logger.info(f"报告已保存到：{temp_path}")
             
-            # 分析报告
-            cache = main.upload_pdf_and_cache(temp_path)
-            
-            # 获取概要总结和缓存内容
-            if isinstance(cache, tuple):
-                cached_content = cache[0]  # 第一个元素是缓存的内容
-                summary = cache[1]  # 第二个元素是概要总结
-            else:
-                cached_content = cache
-                summary = str(cache)
+            # 分析报告并创建缓存
+            result = main.upload_pdf_and_cache(temp_path)
+            if result is None or len(result) != 2:
+                raise Exception("报告分析失败")
                 
+            cache, summary = result
             logger.info(f"获取到的概要总结：{summary}")
             
-            # 将概要总结添加到对话历史
+            # 保存缓存到session_state
+            st.session_state.report_cache = cache
+            
+            # 初始化新的对话历史
+            history = []
             history.append({"role": "assistant", "content": summary})
+            return history
             
-            # 保存报告内容到session_state
-            st.session_state.report_content = report_content
+        # 处理后续对话
+        elif message and hasattr(st.session_state, 'report_cache'):
+            logger.info(f"处理后续对话，消息：{message}")
             
-        elif message and hasattr(st.session_state, 'report_content'):
-            # 继续对话，使用保存的报告内容构建上下文
-            logger.info(f"继续对话，消息：{message}")
+            # 构建完整的对话历史
+            chat_history = []
+            for msg in history:
+                if msg["role"] == "user":
+                    chat_history.append(f"用户: {msg['content']}")
+                else:
+                    chat_history.append(f"助手: {msg['content']}")
             
-            prompt = f"""基于以下报告内容回答问题：
+            # 构建提示
+            prompt = f"""基于报告内容回答以下问题。如果问题超出报告范围，请明确说明。
 
-{st.session_state.report_content}
+对话历史：
+{chr(10).join(chat_history)}
 
-用户问题：{message}
-
-请根据报告内容准确回答，如果问题超出报告范围，请明确说明。"""
+用户新问题：{message}"""
             
-            response = chat_model.generate_content(prompt)
+            # 使用缓存生成回答
+            response = main.generate_content_from_cache(st.session_state.report_cache, prompt)
+            if not response or not response.text:
+                raise Exception("模型没有返回响应")
+                
             response_text = response.text
             logger.info(f"收到回复：{response_text}")
+            
+            # 更新对话历史
             history.append({"role": "user", "content": message})
             history.append({"role": "assistant", "content": response_text})
+            
         else:
             logger.warning("没有上传报告或保存的报告内容")
             history.append({"role": "assistant", "content": "请先上传报告再进行对话"})
         
         return history
+        
     except Exception as e:
         error_msg = f"分析报告时发生错误: {str(e)}"
         logger.error(error_msg, exc_info=True)
