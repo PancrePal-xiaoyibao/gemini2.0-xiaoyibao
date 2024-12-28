@@ -6694,3 +6694,199 @@ TypeError: can only concatenate str (not "tuple") to str
 
 2024-12-24 21:39:43,463 - __main__ - INFO - 开始获取文件列表
 2024-12-24 21:39:44,533 - __main__ - INFO - Streamlit Web UI 初始化完成
+2024-12-28 12:36:11,596 - config - INFO - 成功加载配置文件
+2024-12-28 12:36:12,700 - __main__ - INFO - 日志文件路径：logs/webui_20241228_123612.log
+2024-12-28 12:36:12,701 - __main__ - INFO - 聊天模型初始化成功
+2024-12-28 12:36:12,701 - __main__ - INFO - 视觉模型初始化成功
+2024-12-28 12:36:12,701 - __main__ - INFO - 模型和聊天会话初始化成功
+2024-12-28 12:36:12,820 - __main__ - INFO - 开始获取文件列表
+2024-12-28 12:36:16,054 - __main__ - INFO - 日志文件路径：logs/webui_20241228_123616.log
+2024-12-28 12:36:16,055 - __main__ - INFO - 聊天模型初始化成功
+2024-12-28 12:36:16,056 - __main__ - INFO - 视觉模型初始化成功
+2024-12-28 12:36:16,056 - __main__ - INFO - 模型和聊天会话初始化成功
+2024-12-28 12:36:16,058 - __main__ - INFO - 开始处理普通对话，输入消息：hi
+2024-12-28 12:36:42,144 - config - INFO - 成功加载配置文件
+2024-12-28 12:36:42,932 - __main__ - INFO - 日志文件路径：logs/webui_20241228_123642.log
+2024-12-28 12:36:42,932 - __main__ - INFO - 日志文件路径：logs/webui_20241228_123642.log
+2024-12-28 12:36:42,933 - __main__ - INFO - 聊天模型初始化成功
+2024-12-28 12:36:42,933 - __main__ - INFO - 视觉模型初始化成功
+2024-12-28 12:36:42,933 - __main__ - INFO - 聊天模型初始化成功
+2024-12-28 12:36:42,933 - __main__ - INFO - 模型和聊天会话初始化成功
+2024-12-28 12:36:42,933 - __main__ - INFO - 视觉模型初始化成功
+2024-12-28 12:36:42,934 - __main__ - INFO - 模型和聊天会话初始化成功
+2024-12-28 12:36:42,990 - __main__ - INFO - 开始获取文件列表
+2024-12-28 12:36:43,071 - __main__ - INFO - 开始获取文件列表
+2024-12-28 12:36:44,169 - __main__ - INFO - Streamlit Web UI 初始化完成
+2024-12-28 12:36:44,171 - __main__ - INFO - Streamlit Web UI 初始化完成
+2024-12-28 12:36:45,131 - __main__ - INFO - 日志文件路径：logs/webui_20241228_123645.log
+2024-12-28 12:36:45,135 - __main__ - INFO - 聊天模型初始化成功
+2024-12-28 12:36:45,136 - __main__ - INFO - 视觉模型初始化成功
+2024-12-28 12:36:45,136 - __main__ - INFO - 模型和聊天会话初始化成功
+2024-12-28 12:36:45,138 - __main__ - INFO - 开始处理普通对话，输入消息：hi
+2024-12-28 12:36:46,302 - __main__ - ERROR - 处理对话时发生错误: 400 User location is not supported for the API use.
+Traceback (most recent call last):
+  File "/Users/qinxiaoqiang/Downloads/gemini2.0-xiaoyibao/streamlit_web.py", line 115, in chat_function
+    response = chat_session.send_message(prompts['chat'] + "\n\n用户问题：" + message)
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/generativeai/generative_models.py", line 578, in send_message
+    response = self.model.generate_content(
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/generativeai/generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 830, in generate_content
+    response = rpc(
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/api_core/retry/retry_unary.py", line 293, in retry_wrapped_func
+    return retry_target(
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/api_core/retry/retry_unary.py", line 153, in retry_target
+    _retry_error_helper(
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/api_core/retry/retry_base.py", line 212, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/api_core/retry/retry_unary.py", line 144, in retry_target
+    result = target()
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/api_core/timeout.py", line 120, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/api_core/grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.FailedPrecondition: 400 User location is not supported for the API use.
+2024-12-28 12:36:46,315 - __main__ - INFO - 开始获取文件列表
+2024-12-28 12:36:47,642 - __main__ - INFO - Streamlit Web UI 初始化完成
+2024-12-28 12:37:18,054 - __main__ - INFO - 日志文件路径：logs/webui_20241228_123718.log
+2024-12-28 12:37:18,060 - __main__ - INFO - 聊天模型初始化成功
+2024-12-28 12:37:18,060 - __main__ - INFO - 视觉模型初始化成功
+2024-12-28 12:37:18,060 - __main__ - INFO - 模型和聊天会话初始化成功
+2024-12-28 12:37:18,066 - __main__ - INFO - 开始处理普通对话，输入消息：hi
+2024-12-28 12:37:18,499 - __main__ - ERROR - 处理对话时发生错误: 400 User location is not supported for the API use.
+Traceback (most recent call last):
+  File "/Users/qinxiaoqiang/Downloads/gemini2.0-xiaoyibao/streamlit_web.py", line 115, in chat_function
+    response = chat_session.send_message(prompts['chat'] + "\n\n用户问题：" + message)
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/generativeai/generative_models.py", line 578, in send_message
+    response = self.model.generate_content(
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/generativeai/generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 830, in generate_content
+    response = rpc(
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/api_core/retry/retry_unary.py", line 293, in retry_wrapped_func
+    return retry_target(
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/api_core/retry/retry_unary.py", line 153, in retry_target
+    _retry_error_helper(
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/api_core/retry/retry_base.py", line 212, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/api_core/retry/retry_unary.py", line 144, in retry_target
+    result = target()
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/api_core/timeout.py", line 120, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/opt/miniconda3/envs/cow/lib/python3.10/site-packages/google/api_core/grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.FailedPrecondition: 400 User location is not supported for the API use.
+2024-12-28 12:37:18,507 - __main__ - INFO - 开始获取文件列表
+2024-12-28 12:37:19,657 - __main__ - INFO - Streamlit Web UI 初始化完成
+2024-12-28 12:37:35,060 - __main__ - INFO - 日志文件路径：logs/webui_20241228_123735.log
+2024-12-28 12:37:35,066 - __main__ - INFO - 聊天模型初始化成功
+2024-12-28 12:37:35,066 - __main__ - INFO - 视觉模型初始化成功
+2024-12-28 12:37:35,066 - __main__ - INFO - 模型和聊天会话初始化成功
+2024-12-28 12:37:35,072 - __main__ - INFO - 开始处理普通对话，输入消息：hi
+2024-12-28 12:37:37,584 - __main__ - INFO - 收到回复：你好！很高兴能为你解答医学相关的问题。请尽管提出你的疑问，我会尽力用通俗易懂的方式为你讲解。无论你有什么关于身体、健康、疾病或者其他医学相关的问题，都欢迎随时提问。 
+
+为了更好地帮助你，你可以告诉我：
+
+* **你遇到了什么问题？** 是身体不舒服、对某种疾病有疑问，还是想了解一些健康知识？
+* **你希望了解什么？**  你希望我从哪个角度来解答你的问题？例如，是想了解病因、症状、治疗方法，还是预防措施？
+* **你有什么特别的顾虑吗？** 例如，你是否担心某些副作用，或者对某些治疗方法有疑虑？
+
+我会根据你的具体情况，尽我所能提供专业、准确、易懂的解答。期待你的提问！
+
+2024-12-28 12:37:37,595 - __main__ - INFO - 开始获取文件列表
+2024-12-28 12:37:37,757 - __main__ - INFO - 日志文件路径：logs/webui_20241228_123737.log
+2024-12-28 12:37:37,758 - __main__ - INFO - 聊天模型初始化成功
+2024-12-28 12:37:37,758 - __main__ - INFO - 视觉模型初始化成功
+2024-12-28 12:37:37,758 - __main__ - INFO - 模型和聊天会话初始化成功
+2024-12-28 12:37:37,760 - __main__ - INFO - 开始处理普通对话，输入消息：hi
+2024-12-28 12:37:39,497 - __main__ - INFO - 收到回复：你好！很高兴能为你提供医疗方面的咨询。请告诉我你有什么问题，我会尽力用通俗易懂的方式为你解答。 
+
+无论是关于身体不适、疾病预防、健康生活方式，还是对医学知识的疑问，都可以提出来。我会尽力帮你理解，并提供有用的建议。 
+
+期待你的提问！
+
+2024-12-28 12:37:39,506 - __main__ - INFO - 开始获取文件列表
+2024-12-28 12:37:40,597 - __main__ - INFO - Streamlit Web UI 初始化完成
+2024-12-28 12:37:43,722 - __main__ - INFO - 日志文件路径：logs/webui_20241228_123743.log
+2024-12-28 12:37:43,725 - __main__ - INFO - 聊天模型初始化成功
+2024-12-28 12:37:43,725 - __main__ - INFO - 视觉模型初始化成功
+2024-12-28 12:37:43,726 - __main__ - INFO - 模型和聊天会话初始化成功
+2024-12-28 12:37:43,810 - __main__ - INFO - 开始获取文件列表
+2024-12-28 12:37:44,882 - __main__ - INFO - Streamlit Web UI 初始化完成
+2024-12-28 12:37:48,899 - __main__ - INFO - 日志文件路径：logs/webui_20241228_123748.log
+2024-12-28 12:37:48,902 - __main__ - INFO - 聊天模型初始化成功
+2024-12-28 12:37:48,903 - __main__ - INFO - 视觉模型初始化成功
+2024-12-28 12:37:48,903 - __main__ - INFO - 模型和聊天会话初始化成功
+2024-12-28 12:37:48,980 - __main__ - INFO - 开始处理图片分析，类型：病理，消息：
+2024-12-28 12:37:48,987 - __main__ - INFO - 图片已保存到：uploads/bingli3.jpg
+2024-12-28 12:37:53,095 - __main__ - INFO - 图片已上传到Gemini
+2024-12-28 12:38:05,350 - __main__ - INFO - 收到回复：好的，作为一名病理科医生，我来详细分析这份病理报告和相关信息：
+
+**1. 组织结构特征：**
+
+*   **大体描述：**
+    *   **冰冻切缘：** 胰腺组织一块，大小为5x2.4x0.8cm，边缘有电灼痕迹，并有缝线标记，提示这是手术切除的胰腺组织边缘。
+    *   **常规-胰十二指肠：** 包含胰腺、部分远端胃和十二指肠。胰腺大小为6x4x2.5cm。 
+        *   可见一个2.5x1.5cm的灰白色韧肿物，肉眼观察可能侵犯周围脂肪组织，但未侵犯胆总管和十二指肠。
+        *   肿物距离胰腺切缘2.4cm，距离十二指肠断端15.5cm，距离胃断端10.5cm，距离胆总管断端3.7cm，这些测量值对于评估肿瘤的切除范围和侵犯范围非常重要。
+        *   肝总管断端长1.5cm，直径0.8cm。胃大小为9x5x4cm，十二指肠长7cm。
+        *   胆囊大小为12x3x2.5cm，胆囊管长1.5cm，直径0.2cm。胆囊内含墨绿色胆汁，未见结石息肉，粘膜稍粗糙，壁厚0.1cm。
+        *   胰腺周围、胃周围、十二指肠周围及袋内均查见淋巴结，数量和大小均有记录。
+    *   **镜下所见：** 报告中没有详细描述切片下的组织结构，需要结合病理诊断和免疫组化结果进行推断。
+
+*   **病理诊断：**
+    *   **（胰腺）中分化腺癌：**  明确诊断为胰腺腺癌，且分化程度为中等。肿瘤大小为2.5x1.5cm。
+    *   **神经侵犯：**  发现有神经侵犯，提示肿瘤可能沿神经扩散。
+    *   **未见明确脉管内癌栓：**  未发现肿瘤细胞侵入血管或淋巴管。
+    *   **切缘阴性：** 胰腺切缘、十二指肠切缘、胃切缘、胆总管断端及术中送检胰腺切缘均未发现癌细胞，提示手术切除范围较完整。
+    *   **淋巴结阴性：** 胰腺周围、胃周围、十二指肠周围及另见淋巴结均未发现转移，表明癌细胞未扩散至这些淋巴结。
+    *   **（胆囊）粘膜慢性炎：** 胆囊存在慢性炎症。
+
+**2. 细胞形态特点：**
+
+*   **中分化腺癌：**  说明肿瘤细胞具有腺体结构，但分化程度不如正常腺体，可能表现为：
+    *   细胞异型性：细胞大小、形态不规则，核增大，染色质增多。
+    *   腺体结构：形成不规则的腺泡或管状结构。
+    *   浸润性生长：肿瘤细胞浸润周围组织。
+
+**3. 可能的病理诊断：**
+
+*   **胰腺中分化腺癌，伴神经侵犯，淋巴结未见转移，切缘阴性。**  这是一个相对早期的胰腺癌，但需要注意神经侵犯，这可能影响预后。
+*   **胆囊慢性炎症：**  胆囊的病理结果提示存在慢性炎症，可能与胆囊结石、感染等因素有关。
+
+**4. 需要注意的特殊发现：**
+
+*   **神经侵犯：** 这是一个重要的预后因素，需要密切关注。
+*   **免疫组化结果：**
+    *   **Her-2(0):**  Her-2阴性，表明肿瘤不适合Her-2靶向治疗。
+    *   **IMP3(+):** IMP3阳性，可能提示预后不良。
+    *   **Rb(+):** Rb阳性，可能与肿瘤细胞的增殖有关。
+    *   **S100P(-):** S100P阴性，通常在胰腺癌中表达不高。
+    *   **P53(+++, 70%):** P53高表达，提示p53基因突变，可能与肿瘤进展有关。
+    *   **Ki-67阳性率约70%:** Ki-67高表达，提示肿瘤细胞增殖活跃，通常与预后不良有关。
+    *   **PMS2, MLH1, MSH6, MSH2 (完整表达/正常表达):**  这些是错配修复基因，正常表达表明肿瘤的错配修复功能正常，微卫星不稳定性不高。
+
+**综合分析：**
+
+这份报告显示患者患有胰腺中分化腺癌，肿瘤大小为2.5x1.5cm，伴神经侵犯。幸运的是，淋巴结未见转移，且切缘阴性，表明手术切除较为彻底。免疫组化结果提示肿瘤具有一定的侵袭性，需要密切随访。同时，患者胆囊存在慢性炎症，可能需要进一步处理。
+
+**建议：**
+
+1.  **肿瘤分期：**  根据TNM分期系统对肿瘤进行准确分期，以指导后续治疗。
+2.  **多学科会诊：**  建议肿瘤科、外科、放疗科等多学科专家会诊，制定个体化的综合治疗方案。
+3.  **随访：**  定期进行影像学检查和肿瘤标志物检测，密切监测肿瘤复发或转移情况。
+4.  **基因检测：**  考虑进行肿瘤基因检测，以寻找潜在的靶向治疗机会。
+
+**注意：**
+
+*   以上分析基于提供的病理报告和免疫组化结果，具体治疗方案需要结合患者的临床情况和检查结果进行综合评估。
+*   我没有看到具体的病理切片，因此对细胞形态的描述可能不够详细，需要结合实际切片进一步分析。
+
+希望我的分析对您有所帮助。如有其他问题，请随时提出。
+
+2024-12-28 12:38:05,363 - __main__ - INFO - 开始获取文件列表
+2024-12-28 12:38:05,834 - __main__ - INFO - Streamlit Web UI 初始化完成
