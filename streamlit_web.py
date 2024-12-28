@@ -204,12 +204,6 @@ def analyze_report_chat(pdf_file, message: str, history: list) -> list:
                 cached_content = cache
                 summary = str(cache)
                 
-            # 确保获取到实际内容
-            if hasattr(cached_content, 'content'):
-                report_content = cached_content.content
-            else:
-                report_content = str(cached_content)
-                
             logger.info(f"获取到的概要总结：{summary}")
             
             # 将概要总结添加到对话历史
@@ -470,7 +464,7 @@ with tabs[1]:
 
 
                 image = Image.open(image_file)
-                st.image(image, caption="上传的图片", use_column_width=True)
+                st.image(image, caption="上传的图片", use_container_width=True)
                 image_type = st.selectbox("图片类型", list(prompts["analysis_prompts"].keys()))
                 
                 # 分析按钮组

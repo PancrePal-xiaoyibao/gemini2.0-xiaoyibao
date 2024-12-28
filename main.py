@@ -30,9 +30,14 @@ def clear_memory():
 
 def upload_to_gemini(path, mime_type=None):
     """Uploads the given file to Gemini."""
-    file = genai.upload_file(path, mime_type=mime_type)
-    print(f"Uploaded file '{file.display_name}' as: {file.uri}")
-    return file
+    # 新版本API中直接使用PIL Image对象或文件路径
+    if mime_type and mime_type.startswith('image/'):
+        from PIL import Image
+        image = Image.open(path)
+        return image
+    else:
+        with open(path, 'rb') as f:
+            return f.read()
 
 def upload_pdf_and_cache(pdf_url):
     """上传PDF文档并创建缓存，并生成概要总结。"""
