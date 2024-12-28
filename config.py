@@ -132,5 +132,9 @@ class Config:
         """获取登录密码"""
         return self.config.get("system_config", {}).get("login_config", {}).get("password", "")
 
+    def get_password_expiry_days(self):
+        """获取密码过期天数"""
+        return self.config.get("system_config", {}).get("login_config", {}).get("password_expiry_days", 3)
+
 # 创建全局配置实例
 config = Config()

@@ -1,14 +1,79 @@
 import streamlit as st
 import os
 import logging
-import sys
-from datetime import datetime
+from datetime import datetime, timedelta
+from PIL import Image
+import google.generativeai as genai
 from config import config
 import main
 from mange_filelist import list_all_files, delete_file, clear_all_cache
-import google.generativeai as genai
-from dotenv import load_dotenv
-from PIL import Image
+
+# 设置页面配置
+st.set_page_config(
+    page_title=config.get_ui_config().get('title', '小胰宝Gemini2.0功能测试Demo医疗助手'),
+    page_icon="⚕️",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# 配置日志
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def check_password():
+    """检查用户密码"""
+    if "password_correct" not in st.session_state:
+        st.session_state.password_correct = False
+        
+    if not st.session_state.password_correct:
+        # 首次访问或密码错误时显示输入框
+        st.markdown("""
+        <style>
+            .stAlert {
+                display: none !important;
+            }
+            .css-1p05t8e {
+                padding-top: 2rem;
+            }
+            .stButton > button {
+                background-color: #9C27B0 !important;
+                color: white !important;
+            }
+            .stButton > button:hover {
+                background-color: #7B1FA2 !important;
+                transform: translateY(-1px);
+                box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            }
+        </style>
+        """, unsafe_allow_html=True)
+        
+        col1, col2, col3 = st.columns([1,2,1])
+        with col2:
+            st.markdown("### 登录系统")
+            st.markdown("欢迎使用小胰宝医疗助手，请输入密码登录。")
+            password = st.text_input("请输入密码", type="password", key="password")
+            
+            if password:
+                if st.button("提交", key="submit_button", use_container_width=True) or password:
+                    if password == config.get_login_password():
+                        st.session_state.password_correct = True
+                        st.session_state.password_expiry = datetime.now() + timedelta(days=config.get_password_expiry_days())
+                        st.rerun()
+                    else:
+                        st.error("密码错误，请重试！")
+        return False
+    
+    # 检查密码是否过期
+    if hasattr(st.session_state, 'password_expiry'):
+        if datetime.now() > st.session_state.password_expiry:
+            st.session_state.password_correct = False
+            return False
+    
+    return True
+
+# 检查密码
+if not check_password():
+    st.stop()
 
 # 设置日志文件路径
 log_dir = "logs"
@@ -21,14 +86,11 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
         logging.FileHandler(log_file, encoding='utf-8'),
-        logging.StreamHandler(sys.stdout)
+        logging.StreamHandler()
     ]
 )
 logger = logging.getLogger(__name__)
 logger.info(f"日志文件路径：{log_file}")
-
-# 加载环境变量
-load_dotenv()
 
 # 初始化模型
 def setup_gemini():
@@ -295,13 +357,6 @@ def clear_cache_ui() -> str:
         return error_msg
 
 # --- Streamlit UI ---
-
-st.set_page_config(
-    page_title=ui_config.get('title', '小胰宝Gemini2.0功能测试Demo医疗助手'),
-    page_icon="⚕️",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
 
 st.markdown(
     f"<style>body {{ background-color: {ui_config.get('theme_color', '#ffffff')}; }}</style>", 
@@ -744,7 +799,28 @@ hr {
 
 /* 标题样式 */
 h3 {
-    color: var(--primary-dark);
+    margin: 1rem 0 !important;
+    color: var(--primary-dark) !important;
+    font-size: 1.2rem !important;
+}
+
+/* 列对齐样式 */
+[data-testid="column"] {
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 0.25rem !important;
+}
+
+/* 去除 Streamlit 默认的列间距 */
+[data-testid="column"] > div {
+    width: 100% !important;
+}
+
+/* toast 消息样式 */
+.stToast {
+    background-color: var(--primary-light) !important;
+    color: var(--primary-dark) !important;
+    border-radius: 4px !important;
 }
 </style>
 """, unsafe_allow_html=True)
