@@ -68,7 +68,7 @@ def setup_gemini():
                 max_output_tokens=vision_config.get('max_output_tokens', 2048),
             )
         )
-        logger.info("视觉���型初始化成功")
+        logger.info("视觉模型初始化成功")
         
         return chat_model, vision_model
         
@@ -130,7 +130,7 @@ def chat_function(message: str, history: list) -> list:
         history.append({"role":"assistant", "content":f"对话过程中发生错误：{e}，请查看后台日志"})
         return history
 
-def analyze_image_chat(image, image_type: str, message: str, history: list) -> list:
+def analyze_image_chat(image, image_file, image_type: str, message: str, history: list) -> list:
     """处理图片分析和对话"""
     try:
         logger.info(f"开始处理图片分析，类型：{image_type}，消息：{message}")
@@ -138,8 +138,9 @@ def analyze_image_chat(image, image_type: str, message: str, history: list) -> l
             history.append({"role": "assistant", "content": "请先上传图片"})
             return history
         
-        # 保存图片到临时文件
-        temp_path = os.path.join(config.get_upload_path(), "temp_image.jpg")
+        # 保存图片到临时文件,,使用原始文件名
+        original_filename = image_file.name
+        temp_path = os.path.join(config.get_upload_path(), original_filename)
         image.save(temp_path)
         logger.info(f"图片已保存到：{temp_path}")
 
@@ -185,7 +186,6 @@ def analyze_report_chat(pdf_file, message: str, history: list) -> list:
             history.append({"role": "assistant", "content": "请先上传报告"})
             return history
         
-        # 使用全局的 chat_model 而不是创建新的模型实例
         if pdf_file is not None:
             # 保存PDF到临时文件
             temp_path = os.path.join(config.get_upload_path(), "temp_report.pdf")
@@ -195,19 +195,49 @@ def analyze_report_chat(pdf_file, message: str, history: list) -> list:
             
             # 分析报告
             cache = main.upload_pdf_and_cache(temp_path)
-            # 使用全局的 chat_model
-            result = chat_model.generate_content(prompts['report_analysis'] + "\n\n" + cache)
-            logger.info(f"收到回复：{result.text}")
-            history.append({"role": "assistant", "content": result.text})
-        else:
-            # 继续对话
+            
+            # 获取概要总结和缓存内容
+            if isinstance(cache, tuple):
+                cached_content = cache[0]  # 第一个元素是缓存的内容
+                summary = cache[1]  # 第二个元素是概要总结
+            else:
+                cached_content = cache
+                summary = str(cache)
+                
+            # 确保获取到实际内容
+            if hasattr(cached_content, 'content'):
+                report_content = cached_content.content
+            else:
+                report_content = str(cached_content)
+                
+            logger.info(f"获取到的概要总结：{summary}")
+            
+            # 将概要总结添加到对话历史
+            history.append({"role": "assistant", "content": summary})
+            
+            # 保存报告内容到session_state
+            st.session_state.report_content = report_content
+            
+        elif message and hasattr(st.session_state, 'report_content'):
+            # 继续对话，使用保存的报告内容构建上下文
             logger.info(f"继续对话，消息：{message}")
-            # 使用全局的 chat_model
-            response = chat_model.generate_content(message)
+            
+            prompt = f"""基于以下报告内容回答问题：
+
+{st.session_state.report_content}
+
+用户问题：{message}
+
+请根据报告内容准确回答，如果问题超出报告范围，请明确说明。"""
+            
+            response = chat_model.generate_content(prompt)
             response_text = response.text
             logger.info(f"收到回复：{response_text}")
             history.append({"role": "user", "content": message})
             history.append({"role": "assistant", "content": response_text})
+        else:
+            logger.warning("没有上传报告或保存的报告内容")
+            history.append({"role": "assistant", "content": "请先上传报告再进行对话"})
         
         return history
     except Exception as e:
@@ -427,7 +457,7 @@ with tabs[1]:
     # 左侧列：图片上传和分析区域
     with col1:
         with st.container():
-            # 图片上传组
+            # 图上组
             st.markdown("### 图片分析区域")
             image_file = st.file_uploader(
                 "上传图片",
@@ -436,6 +466,9 @@ with tabs[1]:
             
             # 图片显示和类型选择
             if image_file:
+
+
+
                 image = Image.open(image_file)
                 st.image(image, caption="上传的图片", use_column_width=True)
                 image_type = st.selectbox("图片类型", list(prompts["analysis_prompts"].keys()))
@@ -445,12 +478,18 @@ with tabs[1]:
                 with col_analyze:
                     if st.button("分析图片", key="analyze_image_btn", use_container_width=True):
                         with st.spinner("分析中..."):
-                            updated_history = analyze_image_chat(image, image_type, "", st.session_state.image_chat_messages)
+                            updated_history = analyze_image_chat(
+                                image,
+                                image_file,
+                                image_type,
+                                "",
+                                st.session_state.image_chat_messages
+                            )
                             st.session_state.image_chat_messages = updated_history
                 with col_clear:
                     if st.button("清除图片", key="clear_image_btn", use_container_width=True):
                         st.session_state.image_chat_messages = []
-                        st.experimental_rerun()
+                        st.rerun()
 
     # 右侧列：对话历史
     with col2:
@@ -487,6 +526,7 @@ with tabs[1]:
                 with st.spinner("处理中..."):
                     updated_history = analyze_image_chat(
                         image,
+                        image_file,
                         image_type,
                         image_msg,
                         st.session_state.image_chat_messages
@@ -497,7 +537,7 @@ with tabs[1]:
                     # 使用 rerun 来清空输入框
                     if 'image_chat_input' in st.session_state:
                         del st.session_state.image_chat_input
-                    st.experimental_rerun()
+                    st.rerun()
             else:
                 st.warning("请确保已上传图片并输入问题")
 
@@ -589,7 +629,7 @@ with tabs[2]:
                 with col_clear:
                     if st.button("清除报告", key="clear_report_btn", use_container_width=True):
                         st.session_state.report_chat_messages = []
-                        st.experimental_rerun()
+                        st.rerun()
 
     # 右侧列：对话历史
     with col2:
@@ -635,7 +675,7 @@ with tabs[2]:
                     # 使用 rerun 来清空输入框
                     if 'report_chat_input' in st.session_state:
                         del st.session_state.report_chat_input
-                    st.experimental_rerun()
+                    st.rerun()
             else:
                 st.warning("请先上传报告或输入问题")
 
@@ -726,7 +766,7 @@ with tabs[3]:
         st.text_area("当前文件", value=file_list_str, height=300, key="file_list_display")
         
         # 操作区域
-        st.markdown("### 文件操作")
+        st.markdown("### 文��操作")
         
         # 使用container包装所有列，确保对齐
         with st.container():
@@ -784,7 +824,7 @@ st.markdown("""
     margin-top: 1rem;
 }
 
-/* 输入框样式 */
+/* 输入样式 */
 .stTextInput input {
     height: 36px !important;
     margin-bottom: 0 !important;

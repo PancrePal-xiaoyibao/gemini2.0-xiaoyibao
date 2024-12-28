@@ -69,7 +69,7 @@ class Config:
         return prompts.get('analysis_prompts', {})
 
     def get_image_type_prompt(self, image_type: str) -> Optional[Dict[str, str]]:
-        """获取特定图片类型的提示词配置"""
+        """获取特定图片类型的提���词配置"""
         image_types = self.get_image_types()
         return image_types.get(image_type)
 
@@ -96,6 +96,37 @@ class Config:
         """检查是否支持的文档类型"""
         system_config = self.get_system_config()
         return mime_type in system_config.get('supported_doc_types', [])
+
+    def save_uploaded_file(self, uploaded_file) -> str:
+        """
+        保存上传的文件并返回保存路径
+        :param uploaded_file: StreamlitUploadedFile对象
+        :return: 保存后的文件路径
+        """
+        # 获取上传路径
+        upload_path = self.get_upload_path()
+        
+        # 获取原始文件名
+        original_filename = uploaded_file.name
+        file_extension = original_filename.split('.')[-1].lower()
+        
+        # 构建保存路径
+        save_path = os.path.join(upload_path, original_filename)
+        
+        # 处理文件名冲突
+        if os.path.exists(save_path):
+            base_name = original_filename.rsplit('.', 1)[0]
+            counter = 1
+            while os.path.exists(save_path):
+                new_filename = f"{base_name}_{counter}.{file_extension}"
+                save_path = os.path.join(upload_path, new_filename)
+                counter += 1
+        
+        # 保存文件
+        with open(save_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+        
+        return save_path
 
 # 创建全局配置实例
 config = Config()
