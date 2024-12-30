@@ -8,7 +8,7 @@ class Config:
     def __init__(self):
         """初始化配置类"""
         self.config_path = os.path.join(os.path.dirname(__file__), 'config.json')
-        self._setup_logging()  # 先设置日志
+        self.config = {}  # 初始化空配置
         self.load_config()     # 再加载配置
 
     def _setup_logging(self) -> None:
@@ -16,21 +16,55 @@ class Config:
         log_dir = "logs"
         os.makedirs(log_dir, exist_ok=True)
         
-        logging.basicConfig(
-            level=logging.INFO,
-            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-            handlers=[
-                logging.FileHandler(os.path.join(log_dir, 'app.log'), encoding='utf-8'),
-                logging.StreamHandler()
-            ]
+        # 获取日志配置
+        log_config = self.config.get('system_config', {}).get('logging', {
+            'level': 'INFO',
+            'max_bytes': 10485760,  # 10MB
+            'backup_count': 5,
+            'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        })
+        
+        # 设置日志级别
+        log_level = getattr(logging, log_config.get('level', 'INFO'))
+        
+        # 设置日志格式
+        log_format = log_config.get('format')
+        formatter = logging.Formatter(log_format)
+        
+        # 设置日志处理器
+        from logging.handlers import RotatingFileHandler
+        file_handler = RotatingFileHandler(
+            os.path.join(log_dir, 'app.log'),
+            maxBytes=log_config.get('max_bytes', 10485760),
+            backupCount=log_config.get('backup_count', 5),
+            encoding='utf-8'
         )
+        file_handler.setFormatter(formatter)
+        
+        console_handler = logging.StreamHandler()
+        console_handler.setFormatter(formatter)
+        
+        # 配置根日志记录器
+        root_logger = logging.getLogger()
+        root_logger.setLevel(log_level)
+        
+        # 清除现有的处理器
+        root_logger.handlers.clear()
+        
+        # 添加新的处理器
+        root_logger.addHandler(file_handler)
+        root_logger.addHandler(console_handler)
+        
         self.logger = logging.getLogger(__name__)
+        self.logger.info("日志系统初始化完成")
 
     def load_config(self) -> None:
         """从config.json加载配置"""
         try:
             with open(self.config_path, 'r', encoding='utf-8') as f:
                 self.config = json.load(f)
+            # 设置日志配置
+            self._setup_logging()  # 先设置日志
             self.logger.info("成功加载配置文件")
         except Exception as e:
             self.logger.error(f"加载配置文件失败: {e}")

@@ -16,8 +16,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# 配置日志
-logging.basicConfig(level=logging.INFO)
+# 从config获取logger
 logger = logging.getLogger(__name__)
 
 def check_password():
@@ -74,23 +73,6 @@ def check_password():
 # 检查密码
 if not check_password():
     st.stop()
-
-# 设置日志文件路径
-log_dir = "logs"
-os.makedirs(log_dir, exist_ok=True)
-log_file = os.path.join(log_dir, f"webui_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
-
-# 配置日志
-logging.basicConfig(
-    level=logging.DEBUG,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(log_file, encoding='utf-8'),
-        logging.StreamHandler()
-    ]
-)
-logger = logging.getLogger(__name__)
-logger.info(f"日志文件路径：{log_file}")
 
 # 初始化模型
 def setup_gemini():
