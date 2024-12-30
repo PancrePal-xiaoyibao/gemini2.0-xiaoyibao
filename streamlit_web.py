@@ -74,7 +74,7 @@ def check_password():
 if not check_password():
     st.stop()
 
-# 初始化模型
+# 初始化模型的函数
 def setup_gemini():
     """初始化Gemini配置"""
     try:
@@ -91,7 +91,6 @@ def setup_gemini():
         model_config = config.get_model_config()
         
         # 初始化聊天模型
-        global chat_model  # 确保使用全局变量
         chat_config = model_config.get('chat', {}) # 获取聊天模型配置
         chat_model = genai.GenerativeModel(  # 创建聊天模型
             model_name=chat_config.get('model_name', 'gemini-2.0-flash-exp'),  # 也可以使用gemini-pro模型
@@ -103,7 +102,6 @@ def setup_gemini():
         logger.info("聊天模型初始化成功")
         
         # 初始化视觉模型
-        global vision_model  # 确保使用全局变量
         vision_config = model_config.get('vision', {})
         vision_model = genai.GenerativeModel(
             model_name=vision_config.get('model_name', 'gemini-pro-vision'),  # 使用gemini-pro-vision模型
@@ -121,22 +119,17 @@ def setup_gemini():
         logger.error(error_msg, exc_info=True)
         raise Exception(error_msg)
 
+# 初始化模型的函数
+def initialize_models():
+    if 'chat_model' not in st.session_state:
+        chat_model, vision_model = setup_gemini()  # 调用之前定义的模型初始化函数
+        st.session_state.chat_model = chat_model
+        st.session_state.vision_model = vision_model
+        st.session_state.chat_session = chat_model.start_chat(history=[])
 
-# 初始化全局变量
-chat_model = None
-vision_model = None
-chat_session = None  # 添加chat_session
+# 在应用启动时调用初始化函数
+initialize_models()
 
-# 初始化模型
-try:
-    chat_model, vision_model = setup_gemini()
-    # 初始化聊天会话
-    chat_session = chat_model.start_chat(history=[])
-    logger.info("模型和聊天会话初始化成功")
-except Exception as e:
-    logger.error(f"模型初始化失败: {e}")
-    sys.exit(1)
-    
 # 从配置中获取 UI 设置
 ui_config = config.get_ui_config()
 prompts = config.get_prompts()
@@ -150,13 +143,13 @@ def chat_function(message: str, history: list) -> list:
         if not message:
             return history
             
-        if not chat_session:
+        if not st.session_state.chat_session:
             error_msg = "聊天会话未初始化"
             logger.error(error_msg)
             history.append({"role": "assistant", "content": error_msg})
             return history
 
-        response = chat_session.send_message(prompts['chat'] + "\n\n用户问题：" + message)
+        response = st.session_state.chat_session.send_message(prompts['chat'] + "\n\n用户问题：" + message)
 
         if not response or not response.text:
             logger.error("模型没有返回响应")
@@ -202,9 +195,9 @@ def analyze_image_chat(image, image_file, image_type: str, message: str, history
 
         if not message:
             prompt = image_config['system_prompt']
-            response = vision_model.generate_content([image_file, prompt])
+            response = st.session_state.vision_model.generate_content([image_file, prompt])
         else:
-            response = vision_model.generate_content([image_file, message])
+            response = st.session_state.vision_model.generate_content([image_file, message])
             
         response_text = response.text
         logger.info(f"收到回复：{response_text}")
